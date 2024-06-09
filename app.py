@@ -55,10 +55,6 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
-@app.route('/create')
-def createpage():
-    return render_template('generate.html')
-
 @app.route('/email')
 def email():
     return render_template('email.html')
