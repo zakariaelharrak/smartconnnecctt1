@@ -837,6 +837,30 @@ var swiper = new Swiper('.swiper-container', {
     document.getElementById('mainImage').src = imageSrc;
 }
 
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+  
+      // Submit the form asynchronously
+      var form = this;
+      var formData = new FormData(form);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", form.getAttribute("action"));
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          // Check if the form submission was successful
+          if (xhr.status === 200) {
+            // Redirect the user after successful submission
+            window.location.href = "welcome"; // Change the URL as needed
+          } else {
+            // Handle errors if needed
+            console.error("Form submission failed with status:", xhr.status);
+          }
+        }
+      };
+      xhr.send(formData);
+    });
+
 	  </script>
 </body>
 
